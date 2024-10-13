@@ -37,3 +37,30 @@ class Solution {
        return head;
     }
 };//TC and SC:O( n )
+
+class Solution {
+  public:
+    // Function to remove duplicates from sorted linked list.
+    Node* removeDuplicates(Node* head) {
+        if(head==NULL)return head;
+
+        Node* prev=head;
+        Node* curr=head->next;
+        while(curr)
+        {
+            if(prev->data==curr->data)
+            {
+                prev->next=curr->next;
+                delete curr;
+                curr=prev->next;
+            }
+            else
+            {
+                prev=prev->next;
+                curr=curr->next;
+            }
+        }
+       
+        return head;
+    }
+};//TC:O(n),SC:O(1)
