@@ -1,3 +1,43 @@
+// using vector
+class Solution {
+  public:
+    Node* sortedMerge(Node* head1, Node* head2) {
+       vector<int>ans;
+       while(head1!=NULL)
+       {
+           ans.push_back(head1->data);
+           head1=head1->next;
+       }
+       while(head2!=NULL)
+       {
+           ans.push_back(head2->data);
+           head2=head2->next;
+       }
+       sort(ans.begin(),ans.end());
+       
+       Node* head= NULL;
+       Node* tail=NULL;
+       
+       for(int i=0;i<ans.size();i++)  
+         {
+             Node* newNode=new Node(ans[i]);
+             if(head==NULL)
+             {
+                 head=tail=newNode;
+             }
+             else
+             {
+                 
+                 tail->next=newNode;
+                 tail=newNode;
+             }
+       }
+       return head;
+       
+    }
+};//TC and SC:O(n)
+
+
 class Solution {
   public:
     Node* sortedMerge(Node* left, Node* right) {
